@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 任务行：真底 + 点击整行时的高亮 -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#26FFFFFF">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#1FFFFFFF" />
+            <corners android:radius="13dp" />
+        </shape>
+    </item>
+</ripple>

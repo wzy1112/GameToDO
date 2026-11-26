@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <!-- 头部：点标题打开 App -->
+    <LinearLayout
+        android:id="@+id/wg_header"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@drawable/widget_header_ripple"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp">
+
+        <TextView
+            android:id="@+id/wg_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="玩了么"
+            android:textColor="#4DD0E1"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/wg_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:text="今日全清"
+            android:textColor="#93A3B1"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/wg_refresh"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:background="@drawable/widget_btn_ripple"
+            android:contentDescription="刷新"
+            android:padding="8dp"
+            android:src="@drawable/ic_widget_refresh" />
+    </LinearLayout>
+
+    <!-- RemoteViewsService 要求这个 id；高度由父级 weight 分配，别用 match_parent -->
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="6dp"
+        android:layout_weight="1"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="2dp"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none" />
+
+    <TextView
+        android:id="@+id/wg_empty"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="6dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="今天的活儿都清完了，去玩吧"
+        android:textColor="#93A3B1"
+        android:textSize="13sp"
+        android:visibility="gone" />
+
+</LinearLayout>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">玩了么</string>
+    <string name="widget_desc">今日未完成任务，可直接勾完成、一键启动游戏</string>
+</resources>

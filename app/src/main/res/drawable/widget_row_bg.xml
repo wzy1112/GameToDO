@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 任务行底色，跟卡片底拉开层次，让人一眼知道这一整条是能点的 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#1FFFFFFF" />
+    <corners android:radius="13dp" />
+</shape>
