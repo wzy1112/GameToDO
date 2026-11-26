@@ -3,6 +3,8 @@
 给玩家用的游戏待办：日常、周常、版本活动该做的事一目了然，勾一下就知道今天还差什么。
 刷新时间按游戏自己定（不是 0 点），绑上手机里的游戏还能从桌面一键启动。
 
+[![release](https://img.shields.io/github/v/release/wzy1112/GameToDO?label=release)](../../releases/latest)
+
 <p align="center">
   <img src="docs/screenshots/today.png" width="260" alt="今日" />
   &nbsp;&nbsp;
@@ -38,10 +40,12 @@
 
 ## 下载安装
 
-从 [`release/GameTodo-1.0.0.apk`](release/GameTodo-1.0.0.apk) 下载，传到手机安装即可（首次需允许「安装未知应用」）。
+到 [**Releases**](../../releases/latest) 页面下载最新 APK，传到手机安装即可（首次需允许「安装未知应用」）。
+
+直链（v1.0.0）：[`GameTodo-1.0.0.apk`](../../releases/download/v1.0.0/GameTodo-1.0.0.apk)
 
 ```bash
-adb install -r release/GameTodo-1.0.0.apk
+adb install -r GameTodo-1.0.0.apk
 ```
 
 首次使用建议把两个权限给上，否则提醒不会响：
