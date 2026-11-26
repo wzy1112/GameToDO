@@ -26,8 +26,8 @@ android {
         targetSdk = 35
         // 版本号：大版本.小版本.迭代序列（大版本=大型更新/重构，小版本=对外发包，迭代序列=每次打包递增）
         // versionCode = 大*10000 + 小*100 + 迭代，保证单调递增
-        versionCode = 10000
-        versionName = "1.0.0"
+        versionCode = 10001
+        versionName = "1.0.1"
     }
 
     signingConfigs {
