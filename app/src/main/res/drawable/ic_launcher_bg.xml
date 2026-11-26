@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 自适应图标背景层：满幅底图基本盖住它，只在掩码动画/异形掩码时露一点，取图里最暗的深蓝紫 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:angle="45"
+        android:endColor="#2A1B63"
+        android:startColor="#0B1236" />
+</shape>
