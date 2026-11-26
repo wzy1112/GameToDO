@@ -10,3 +10,9 @@ captures/
 local.properties
 *.hprof
 *.log
+
+# 签名文件与密码不入库
+keystore/
+keystore.properties
+*.jks
+*.keystore
