@@ -1,81 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 外层是为了在分组首行上方插一条分割线，行本体还是下面那个 LinearLayout -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/wg_item_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/widget_row_ripple"
-    android:gravity="center_vertical"
-    android:minHeight="52dp"
-    android:orientation="horizontal"
-    android:paddingStart="2dp"
-    android:paddingTop="4dp"
-    android:paddingEnd="2dp"
-    android:paddingBottom="4dp">
+    android:orientation="vertical">
 
-    <!-- 勾选框：默认空心，点一下标记完成 -->
-    <FrameLayout
-        android:id="@+id/wg_check"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/widget_btn_ripple">
+    <!-- 分组头：日常 / 周常 / 活动 + 右侧延伸的分隔线。
+         必须用 RemoteViews 支持的控件，裸 View 会让整行 inflate 失败（列表直接空掉） -->
+    <LinearLayout
+        android:id="@+id/wg_group_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="2dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/wg_group_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.08"
+            android:textColor="#7E8B99"
+            android:textSize="10sp" />
 
         <ImageView
-            android:id="@+id/wg_check_icon"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:layout_gravity="center"
-            android:contentDescription="标记完成"
-            android:src="@drawable/ic_widget_check_off" />
-    </FrameLayout>
-
-    <!-- 游戏图标 -->
-    <ImageView
-        android:id="@+id/wg_icon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="2dp"
-        android:contentDescription="@null" />
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/wg_task"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="#E8EFF5"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/wg_game"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="#93A3B1"
-            android:textSize="10sp" />
+            android:id="@+id/wg_group_line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="#33FFFFFF"
+            android:contentDescription="@null" />
     </LinearLayout>
 
-    <!-- 启动按钮：游戏没绑包名时整块藏掉 -->
-    <FrameLayout
-        android:id="@+id/wg_launch"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="4dp"
-        android:background="@drawable/widget_launch_ripple">
+    <LinearLayout
+        android:id="@+id/wg_item_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/widget_row_ripple"
+        android:gravity="center_vertical"
+        android:minHeight="52dp"
+        android:orientation="horizontal"
+        android:paddingStart="2dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="2dp"
+        android:paddingBottom="4dp">
 
+        <!-- 勾选框：默认空心，点一下标记完成 -->
+        <FrameLayout
+            android:id="@+id/wg_check"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/widget_btn_ripple">
+
+            <ImageView
+                android:id="@+id/wg_check_icon"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:contentDescription="标记完成"
+                android:src="@drawable/ic_widget_check_off" />
+        </FrameLayout>
+
+        <!-- 游戏图标 -->
         <ImageView
-            android:id="@+id/wg_launch_icon"
-            android:layout_width="14dp"
-            android:layout_height="14dp"
-            android:layout_gravity="center"
-            android:contentDescription="启动游戏"
-            android:src="@drawable/ic_widget_play" />
-    </FrameLayout>
+            android:id="@+id/wg_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="4dp"
+            android:contentDescription="@null" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/wg_task"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="#E8EFF5"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/wg_game"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="#93A3B1"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- 启动按钮：游戏没绑包名时整块藏掉 -->
+        <FrameLayout
+            android:id="@+id/wg_launch"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/widget_launch_ripple">
+
+            <ImageView
+                android:id="@+id/wg_launch_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:contentDescription="启动游戏"
+                android:src="@drawable/ic_widget_play" />
+        </FrameLayout>
+    </LinearLayout>
 </LinearLayout>

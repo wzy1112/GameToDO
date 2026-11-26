@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.airu.gametodo.MainActivity
+import com.airu.gametodo.data.TaskType
 import com.airu.gametodo.R
 import kotlinx.coroutines.runBlocking
 
@@ -42,6 +43,23 @@ class TodayFactory(private val context: Context) : RemoteViewsService.RemoteView
         val rv = RemoteViews(context.packageName, layout)
         rv.setTextViewText(R.id.wg_task, item.title)
         rv.setTextViewText(R.id.wg_game, item.gameName)
+
+        // 每种任务开一组：分组头带标题和分隔线，第一行也要显示。
+        // 复用行时两个分支都要显式设，不然会留着上一行的分组头。
+        val isGroupStart = position == 0 || items[position - 1].type != item.type
+        if (isGroupStart) {
+            rv.setViewVisibility(R.id.wg_group_header, View.VISIBLE)
+            rv.setTextViewText(
+                R.id.wg_group_title,
+                when (item.type) {
+                    TaskType.DAILY -> "日常"
+                    TaskType.WEEKLY -> "周常"
+                    TaskType.ONCE -> "活动"
+                }
+            )
+        } else {
+            rv.setViewVisibility(R.id.wg_group_header, View.GONE)
+        }
 
         // 游戏图标：走 content:// 让桌面自己取，避免复用行时沿用上一张图
         val iconUri = WidgetIcons.uri(context, item.packageName)

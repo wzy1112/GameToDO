@@ -17,7 +17,7 @@ object WidgetIcons {
 
     const val AUTHORITY = "com.airu.gametodo.icons"
 
-    private const val SIZE_DP = 24
+    private const val SIZE_DP = 32
     private const val DIR = "widget_icons"
     private val ILLEGAL = Regex("[^A-Za-z0-9._-]")
 
@@ -31,7 +31,7 @@ object WidgetIcons {
     fun file(context: Context, packageName: String): File? {
         if (packageName.isBlank()) return null
         val dir = File(context.filesDir, DIR)
-        val out = File(dir, packageName.replace(ILLEGAL, "_") + ".png")
+        val out = File(dir, packageName.replace(ILLEGAL, "_") + "@$SIZE_DP.png")
         if (out.isFile && out.length() > 0L) return out
         val bitmap = runCatching { render(context, packageName) }.getOrNull() ?: return null
         return runCatching {
@@ -43,7 +43,7 @@ object WidgetIcons {
 
     private fun render(context: Context, packageName: String): Bitmap {
         val drawable = context.packageManager.getApplicationIcon(packageName)
-        val px = (SIZE_DP * context.resources.displayMetrics.density).toInt().coerceIn(48, 96)
+        val px = (SIZE_DP * context.resources.displayMetrics.density).toInt().coerceIn(64, 160)
         // 自适应图标是 108dp 出血图，可见区只有中间 72dp，直接铺满会被放大裁掉一圈
         val canvasSize = if (drawable is AdaptiveIconDrawable) px * 3 / 2 else px
         val full = Bitmap.createBitmap(canvasSize, canvasSize, Bitmap.Config.ARGB_8888)

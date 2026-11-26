@@ -7,6 +7,7 @@ import android.content.Intent
 import androidx.core.app.NotificationCompat
 import com.airu.gametodo.R
 import com.airu.gametodo.data.AppDatabase
+import com.airu.gametodo.widget.WidgetRefresh
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,6 +32,8 @@ class ReminderReceiver : BroadcastReceiver() {
                     else -> null
                 }
                 payload?.let { (title, body) -> notify(app, kind, title, body) }
+                // 提醒时刻顺带刷一次小部件：跨过刷天时间后头部数字能及时跟上，不用等系统那 30 分钟
+                WidgetRefresh.trigger(app)
                 // 无论有没有发通知，都要把下一次排上，否则只响一次
                 ReminderScheduler.rescheduleAll(app)
             } catch (e: Exception) {

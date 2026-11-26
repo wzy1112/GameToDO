@@ -12,7 +12,8 @@ data class WidgetItem(
     val title: String,
     val gameName: String,
     val colorArgb: Int,
-    val packageName: String?
+    val packageName: String?,
+    val type: TaskType
 )
 
 /** 小组件和 App 共用的取数逻辑，避免两边算法漂移 */
@@ -46,7 +47,9 @@ object WidgetData {
                 }
                 pending += Triple(
                     rank,
-                    WidgetItem(task.id, task.title, game.name, game.colorArgb, game.packageName),
+                    WidgetItem(
+                        task.id, task.title, game.name, game.colorArgb, game.packageName, task.type
+                    ),
                     gameIndex
                 )
             }
