@@ -13,8 +13,10 @@ android {
         applicationId = "com.airu.gametodo"
         minSdk = 26
         targetSdk = 35
-        versionCode = 6
-        versionName = "1.4"
+        // 版本号：大版本.小版本.迭代序列（大版本=大型更新/重构，小版本=对外发包，迭代序列=每次打包递增）
+        // versionCode = 大*10000 + 小*100 + 迭代，保证单调递增
+        versionCode = 10000
+        versionName = "1.0.0"
     }
 
     buildTypes {
